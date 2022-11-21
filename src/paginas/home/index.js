@@ -38,12 +38,11 @@ useEffect(() =>{
 return(
 
     <View style = {{alignItems:'center'}}>
-
-<FlatList
-        data = {aluno}
-        numColumns= {2}
-        keyExtractor= { (item)=>item.key}
-        renderItem ={ ({item}) => <CardAluno></CardAluno>}
+        <FlatList
+            data = {aluno}
+            numColumns= {2}
+            keyExtractor= { (item)=>item.key}
+            renderItem ={ ({item}) => <CardAluno data= {item}></CardAluno>}
         />    
     </View>
 

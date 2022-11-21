@@ -1,26 +1,23 @@
 import { View,Text, Image, StyleSheet } from "react-native";
-
- import React from "react";
-
+import React from "react";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/core";
 
  
+export default function CardAluno({data}) {
 
- export default function CardAluno() {
+    const navigation = useNavigation();
 
-
+    function irDetalhes(){
+        navigation.navigate('Detalhes', {dados : data , imagem:data.Imagem});
+    }
 
     return (
 
-
-
-        <View style={estilo.container}>
-
-            <Image style = {estilo.imagem}source={{uri:'https://i.ytimg.com/vi/rVs5_UmLvVE/hqdefault.jpg'}} />
-
-            <Text> Aluno </Text>
-
-        </View>
-
+        <TouchableOpacity onPress={irDetalhes} >
+            <Image style = {estilo.imagem} source={{uri: data.Imagem}}></Image>
+            <Text>{data.nome} </Text>
+        </TouchableOpacity>
     )
 
  }
@@ -29,17 +26,13 @@ import { View,Text, Image, StyleSheet } from "react-native";
 
  const estilo = StyleSheet.create ({
 
-     container: {
-
+    container: {
          marginHorizontal: 5,
-
          backgroundColor: '#abcdef',
-
-     },
-     imagem :{
+    },
+    imagem :{
         width:130,
         height:120
-
-     }
+    }
 
  })
